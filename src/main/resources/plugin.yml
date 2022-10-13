@@ -1,0 +1,4 @@
+name: DaInterpreter
+version: '${project.version}'
+main: interpreter.dainterpreter.DaInterpreter
+api-version: 1.19
