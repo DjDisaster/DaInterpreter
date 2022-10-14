@@ -1,13 +1,11 @@
 package interpreter.dainterpreter.Main;
 
 import interpreter.dainterpreter.Effects.BasicEffects;
-import interpreter.dainterpreter.Effects.EffectRegister;
 import org.bukkit.Bukkit;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 
 import static java.lang.Class.forName;
@@ -15,8 +13,13 @@ import static java.lang.Class.forName;
 public class Execute extends BasicEffects {
     public static HashMap<String, String> effects = new HashMap<String, String>();
     public static void Execute(String syntax, HashMap<String, String> args) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        // loop through string
         String[] split = syntax.split("");
+        // delete all cancel events from split
+        for (int i = 0; i < split.length; i++) {
+            if (split[i].equalsIgnoreCase("Cancel event")) {
+                split[i] = "";
+            }
+        }
         ArrayList<String> Input = new ArrayList<>();
         ArrayList<String> Input2 = new ArrayList<>();
         for (int i = 0; i < split.length; i++) {

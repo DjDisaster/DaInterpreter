@@ -53,6 +53,8 @@ public class EventRegister implements Listener {
             Bukkit.broadcastMessage("Parser" + Parser.Parsed.toString());
             for (int i = 0; i < thiskey.size(); i++) {
                 Bukkit.broadcastMessage("THISKEY " + thiskey.get(i).toString());
+                // cancel event from another class
+                if (thiskey.get(i).toString().equalsIgnoreCase("Cancel Event")) {event.setCancelled(true);}
                 Execute.Execute(thiskey.get(i).toString(), localvar);
                 Bukkit.broadcastMessage("LocalVar" + localvar.toString());
             }
